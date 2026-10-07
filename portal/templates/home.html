@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Placement Portal</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+        }
+
+        header {
+            background-color: #163b70;
+            color: white;
+            padding: 25px;
+        }
+
+        .content {
+            margin-top: 80px;
+        }
+
+        button {
+            background-color: #163b70;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </header>
+
+    <div class="content">
+        <h2>Welcome to Placement Portal</h2>
+        <p>Find jobs and build your future.</p>
+
+       <a href="{% url 'login' %}">
+    <button>Student Login</button>
+</a>
+
+<a href="{% url 'register' %}">
+    <button>Register</button>
+</a>
+    </div>
+</body>
+</html>

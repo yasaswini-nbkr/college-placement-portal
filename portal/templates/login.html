@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Login - Placement Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+        }
+
+        .header {
+            background-color: #1e467d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .login-container {
+            width: 380px;
+            margin: 70px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #1e467d;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e467d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #16365f;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #1e467d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </div>
+
+    <div class="login-container">
+
+        <h2>Student Login</h2>
+
+        <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit" class="login-button">
+    Login
+</button>
+        </form>
+
+        <div class="back">
+            <a href="{% url 'home' %}">← Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

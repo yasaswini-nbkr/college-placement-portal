@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration - Placement Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+        }
+
+        .header {
+            background-color: #1e467d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .register-container {
+            width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .register-container h2 {
+            text-align: center;
+            color: #1e467d;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .register-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e467d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .register-button:hover {
+            background-color: #16365f;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #1e467d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </div>
+
+    <div class="register-container">
+
+        <h2>Student Registration</h2>
+
+       <form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+
+            <label>Full Name</label>
+           <input type="text" name="name" placeholder="Enter your full name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            <label>Department</label>
+            <select name="department" required>
+    <option value="">Select Department</option>
+    <option>CSE</option>
+    <option>ECE</option>
+    <option>EEE</option>
+    <option>MECH</option>
+    <option>CIVIL</option>
+</select>
+
+            <label>Roll Number</label>
+            <input type="text" name="roll_number" placeholder="Enter your roll number" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
+
+            <label>Confirm Password</label>
+           <input type="password" name="confirm_password" placeholder="Confirm your password" required>
+
+           <button type="submit" class="register-button">
+    Register
+</button>
+
+        </form>
+
+        <div class="back">
+            <a href="{% url 'home' %}">← Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+        }
+
+        .header {
+            background-color: #1e467d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .dashboard {
+            width: 700px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .dashboard h2 {
+            text-align: center;
+            color: #1e467d;
+            margin-bottom: 30px;
+        }
+
+        .welcome {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .profile {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .profile p {
+            font-size: 17px;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f5f7fa;
+            border-radius: 5px;
+        }
+
+        .logout {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px;
+            text-align: center;
+            background-color: #1e467d;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .logout:hover {
+            background-color: #16365f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </div>
+
+    <div class="dashboard">
+
+        <h2>Student Dashboard</h2>
+
+        <div class="welcome">
+            Welcome, {{ user.first_name }}!
+        </div>
+
+        <div class="profile">
+
+            <p>
+                <strong>Full Name:</strong>
+                {{ user.first_name }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ user.email }}
+            </p>
+
+            <p>
+                <strong>Phone Number:</strong>
+                {{ student.phone }}
+            </p>
+
+            <p>
+                <strong>Department:</strong>
+                {{ student.department }}
+            </p>
+
+            <p>
+                <strong>Roll Number:</strong>
+                {{ student.roll_number }}
+            </p>
+
+        </div>
+
+      <a href="{% url 'jobs' %}" class="logout">
+    View Available Jobs
+</a>
+
+<a href="{% url 'my_applications' %}" class="logout">
+    My Applications
+</a>
+
+<a href="{% url 'logout' %}" class="logout">
+    Logout
+</a>
+
+    </div>
+
+</body>
+</html>

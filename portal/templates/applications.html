@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Applications</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+        }
+
+        .header {
+            background-color: #1e467d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 850px;
+            margin: 40px auto;
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #1e467d;
+            margin-bottom: 30px;
+        }
+
+        .application-card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .application-card h3 {
+            color: #1e467d;
+            margin-top: 0;
+        }
+
+        .application-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .status {
+            display: inline-block;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #1e467d;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </div>
+
+    <div class="container">
+
+        <h2>My Applications</h2>
+
+        {% for application in applications %}
+
+        <div class="application-card">
+
+            <h3>
+                {{ application.job.company_name }}
+                - 
+                {{ application.job.job_role }}
+            </h3>
+
+            <p>
+                <strong>Location:</strong>
+                {{ application.job.location }}
+            </p>
+
+            <p>
+                <strong>Salary:</strong>
+                {{ application.job.salary }}
+            </p>
+
+            <p>
+                <strong>Applied On:</strong>
+                {{ application.applied_on|date:"d M Y, h:i A" }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+               <span>{{ application.status }}</span>
+            </p>
+
+        </div>
+
+        {% empty %}
+
+        <div class="application-card">
+            <p>You have not applied for any jobs yet.</p>
+        </div>
+
+        {% endfor %}
+
+        <a href="{% url 'dashboard' %}" class="back">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>

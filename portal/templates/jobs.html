@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Jobs</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+        }
+
+        .header {
+            background-color: #1e467d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header p {
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 850px;
+            margin: 40px auto;
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #1e467d;
+            margin-bottom: 30px;
+        }
+
+        .job-card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .job-card h3 {
+            color: #1e467d;
+            margin-top: 0;
+        }
+
+        .job-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #1e467d;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .apply-button:hover {
+            background-color: #16365f;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #1e467d;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>College Placement Portal</h1>
+        <p>Your Career Starts Here</p>
+    </div>
+
+    <div class="container">
+
+        <h2>Available Jobs</h2>
+        {% if messages %}
+    {% for message in messages %}
+        <div style="
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        ">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+        {% for job in jobs %}
+
+        <div class="job-card">
+
+            <h3>{{ job.company_name }} - {{ job.job_role }}</h3>
+
+            <p>
+                <strong>Description:</strong>
+                {{ job.description }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ job.location }}
+            </p>
+
+            <p>
+                <strong>Salary:</strong>
+                {{ job.salary }}
+            </p>
+
+            <p>
+                <strong>Eligibility:</strong>
+                {{ job.eligibility }}
+            </p>
+
+            <p>
+                <strong>Application Deadline:</strong>
+                {{ job.deadline }}
+            </p>
+
+            <a href="{% url 'apply_job' job.id %}" class="apply-button">
+    Apply Now
+</a>
+
+        </div>
+
+        {% empty %}
+
+        <div class="job-card">
+            <p>No jobs are available currently.</p>
+        </div>
+
+        {% endfor %}
+
+        <a href="{% url 'dashboard' %}" class="back">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>
