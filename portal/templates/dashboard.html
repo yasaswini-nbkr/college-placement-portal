@@ -1,142 +1,470 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Student Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Placement Portal</title>
 
     <style>
-        body {
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            background-color: #eef3f8;
         }
 
-        .header {
-            background-color: #1e467d;
-            color: white;
-            text-align: center;
-            padding: 30px;
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 32px;
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
 
-        .header p {
-            margin-top: 10px;
-            font-size: 18px;
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #163b70;
         }
 
-        .dashboard {
-            width: 700px;
-            margin: 50px auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
 
-        .dashboard h2 {
-            text-align: center;
-            color: #1e467d;
-            margin-bottom: 30px;
+        .nav-links a {
+            text-decoration: none;
+            color: #163b70;
+            font-weight: 600;
+            font-size: 15px;
         }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-links .logout {
+            color: #dc2626;
+        }
+
+        .nav-links .logout:hover {
+            color: #b91c1c;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main {
+            padding: 45px 7%;
+        }
+
+
+        /* ================= WELCOME ================= */
 
         .welcome {
-            text-align: center;
-            font-size: 22px;
-            margin-bottom: 30px;
-        }
-
-        .profile {
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-        }
-
-        .profile p {
-            font-size: 17px;
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #f5f7fa;
-            border-radius: 5px;
-        }
-
-        .logout {
-            display: block;
-            width: 200px;
-            margin: 30px auto 0;
-            padding: 12px;
-            text-align: center;
-            background-color: #1e467d;
+            background: linear-gradient(135deg, #163b70, #2563eb);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
+            padding: 35px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .welcome h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            opacity: 0.9;
             font-size: 16px;
         }
 
-        .logout:hover {
-            background-color: #16365f;
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
         }
+
+        .profile-card h2 {
+            color: #163b70;
+            margin-bottom: 20px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .info small {
+            color: #6b7280;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .info strong {
+            color: #1f2937;
+            font-size: 16px;
+        }
+
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .section-title {
+            color: #163b70;
+            margin-bottom: 18px;
+            font-size: 24px;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .action-card {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #1f2937;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .action-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .action-card h3 {
+            color: #163b70;
+            margin-bottom: 8px;
+        }
+
+        .action-card p {
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .jobs {
+            border-left: 5px solid #2563eb;
+        }
+
+        .applications {
+            border-left: 5px solid #16a34a;
+        }
+
+        .resume {
+            border-left: 5px solid #f59e0b;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                height: auto;
+                padding: 20px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .main {
+                padding: 30px 5%;
+            }
+
+            .profile-grid,
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome h1 {
+                font-size: 26px;
+            }
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <div class="header">
-        <h1>College Placement Portal</h1>
-        <p>Your Career Starts Here</p>
-    </div>
 
-    <div class="dashboard">
+    <!-- ================= NAVBAR ================= -->
 
-        <h2>Student Dashboard</h2>
+    <nav>
+
+        <div class="logo">
+            🎓 Placement Portal
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'dashboard' %}">
+                Profile
+            </a>
+
+            <a href="{% url 'jobs' %}">
+                Jobs
+            </a>
+
+            <a href="{% url 'my_applications' %}">
+                My Applications
+            </a>
+
+            <a href="{% url 'logout' %}" class="logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="main">
+
+
+        <!-- ================= WELCOME ================= -->
 
         <div class="welcome">
-            Welcome, {{ user.first_name }}!
-        </div>
 
-        <div class="profile">
-
-            <p>
-                <strong>Full Name:</strong>
-                {{ user.first_name }}
-            </p>
+            <h1>
+                Welcome, {{ student.user.first_name }}! 👋
+            </h1>
 
             <p>
-                <strong>Email:</strong>
-                {{ user.email }}
-            </p>
-
-            <p>
-                <strong>Phone Number:</strong>
-                {{ student.phone }}
-            </p>
-
-            <p>
-                <strong>Department:</strong>
-                {{ student.department }}
-            </p>
-
-            <p>
-                <strong>Roll Number:</strong>
-                {{ student.roll_number }}
+                Manage your placement journey and explore
+                new career opportunities.
             </p>
 
         </div>
 
-      <a href="{% url 'jobs' %}" class="logout">
-    View Available Jobs
-</a>
 
-<a href="{% url 'my_applications' %}" class="logout">
-    My Applications
-</a>
+        <!-- ================= STUDENT PROFILE ================= -->
 
-<a href="{% url 'logout' %}" class="logout">
-    Logout
-</a>
+        <div class="profile-card">
+
+            <h2>
+                👤 Student Profile
+            </h2>
+
+            <div class="profile-grid">
+
+
+                <div class="info">
+
+                    <small>
+                        Full Name
+                    </small>
+
+                    <strong>
+                        {{ student.user.first_name }}
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>
+                        Email
+                    </small>
+
+                    <strong>
+                        {{ student.user.email }}
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>
+                        Phone Number
+                    </small>
+
+                    <strong>
+                        {{ student.phone }}
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>
+                        Department
+                    </small>
+
+                    <strong>
+                        {{ student.department }}
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>
+                        Roll Number
+                    </small>
+
+                    <strong>
+                        {{ student.roll_number }}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
+
+
+        <div class="actions">
+
+
+            <!-- AVAILABLE JOBS -->
+
+            <a href="{% url 'jobs' %}" class="action-card jobs">
+
+                <div class="action-icon">
+                    💼
+                </div>
+
+                <h3>
+                    Available Jobs
+                </h3>
+
+                <p>
+                    Explore available companies and
+                    find jobs that match your skills.
+                </p>
+
+            </a>
+
+
+            <!-- MY APPLICATIONS -->
+
+            <a href="{% url 'my_applications' %}"
+               class="action-card applications">
+
+                <div class="action-icon">
+                    📋
+                </div>
+
+                <h3>
+                    My Applications
+                </h3>
+
+                <p>
+                    View your submitted applications
+                    and check their current status.
+                </p>
+
+            </a>
+
+
+            <!-- RESUME -->
+
+            <a href="{% url 'upload_resume' %}"
+               class="action-card resume">
+
+                <div class="action-icon">
+                    📄
+                </div>
+
+                <h3>
+                    Resume
+                </h3>
+
+                <p>
+                    Upload or update your resume
+                    for placement opportunities.
+                </p>
+
+            </a>
+
+
+        </div>
+
 
     </div>
 
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            College Placement Portal • Your Career Starts Here 🚀
+        </p>
+
+    </footer>
+
+
 </body>
+
 </html>

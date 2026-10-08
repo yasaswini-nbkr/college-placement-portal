@@ -1,116 +1,271 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Login - Placement Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login | Placement Portal</title>
 
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            background-color: #eef3f8;
         }
 
-        .header {
-            background-color: #1e467d;
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eaf2ff, #f7faff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 900px;
+            max-width: 95%;
+            min-height: 520px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LEFT SIDE */
+
+        .left {
+            width: 45%;
+            background: linear-gradient(135deg, #163b70, #2563eb);
             color: white;
-            text-align: center;
-            padding: 30px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 32px;
+        .left .icon {
+            font-size: 65px;
+            margin-bottom: 20px;
         }
 
-        .header p {
-            margin-top: 10px;
-            font-size: 18px;
+        .left h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
         }
 
-        .login-container {
-            width: 380px;
-            margin: 70px auto;
-            background-color: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        .left p {
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
         }
 
-        .login-container h2 {
-            text-align: center;
-            color: #1e467d;
+        /* RIGHT SIDE */
+
+        .right {
+            width: 55%;
+            padding: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            color: #163b70;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #6b7280;
             margin-bottom: 30px;
+        }
+
+        .message {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            color: #374151;
             font-weight: bold;
+            margin-bottom: 8px;
         }
 
         input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
             font-size: 15px;
         }
 
-        .login-button {
-            width: 100%;
-            padding: 12px;
-            background-color: #1e467d;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
-        .login-button:hover {
-            background-color: #16365f;
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #163b70;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .login-btn:hover {
+            background: #2563eb;
+        }
+
+        .register-text {
+            text-align: center;
+            margin-top: 22px;
+            color: #6b7280;
+        }
+
+        .register-text a {
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         .back {
-            text-align: center;
+            display: inline-block;
             margin-top: 20px;
-        }
-
-        .back a {
-            color: #1e467d;
+            text-align: center;
+            color: #163b70;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                padding: 35px;
+                text-align: center;
+            }
+
+            .right {
+                padding: 35px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <h1>College Placement Portal</h1>
-        <p>Your Career Starts Here</p>
-    </div>
+    <div class="container">
 
-    <div class="login-container">
+        <!-- LEFT -->
+        <div class="left">
 
-        <h2>Student Login</h2>
+            <div class="icon">🎓</div>
 
-        <form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Enter your email" required>
+            <h1>Welcome Back!</h1>
 
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter your password" required>
-            <button type="submit" class="login-button">
-    Login
-</button>
-        </form>
+            <p>
+                Login to your placement portal and
+                continue your journey towards your
+                dream career.
+            </p>
 
-        <div class="back">
-            <a href="{% url 'home' %}">← Back to Home</a>
+        </div>
+
+
+        <!-- RIGHT -->
+        <div class="right">
+
+            <h2>Student Login</h2>
+
+            <p class="subtitle">
+                Enter your details to access your account.
+            </p>
+
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
+            <form method="POST" action="{% url 'login' %}">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="login-btn">
+                    Login to Portal
+                </button>
+
+            </form>
+
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="{% url 'register' %}">
+                    Create Account
+                </a>
+            </p>
+
+
+            <a href="{% url 'home' %}" class="back">
+                ← Back to Home
+            </a>
+
         </div>
 
     </div>

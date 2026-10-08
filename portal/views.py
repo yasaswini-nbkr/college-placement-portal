@@ -120,3 +120,22 @@ def my_applications(request):
     return render(request, 'applications.html', {
         'applications': applications
     })
+def upload_resume(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    student = StudentProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        resume = request.FILES.get('resume')
+
+        if resume:
+            student.resume = resume
+            student.save()
+
+            messages.success(request, 'Resume uploaded successfully!')
+            return redirect('dashboard')
+
+    return render(request, 'resume.html', {
+        'student': student
+    })

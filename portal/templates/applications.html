@@ -1,135 +1,423 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Applications</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | Placement Portal</title>
 
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            background-color: #eef3f8;
         }
 
-        .header {
-            background-color: #1e467d;
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #163b70;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .logout {
+            color: #dc2626 !important;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #163b70, #2563eb);
             color: white;
-            text-align: center;
-            padding: 30px;
+            padding: 50px 7%;
         }
 
-        .header h1 {
-            margin: 0;
+        .page-header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
         }
 
-        .header p {
-            margin-top: 10px;
+        .page-header p {
+            opacity: 0.9;
+            font-size: 17px;
         }
 
-        .container {
-            width: 850px;
-            margin: 40px auto;
+        /* MAIN */
+
+        .main {
+            padding: 40px 7%;
         }
 
-        .container h2 {
-            text-align: center;
-            color: #1e467d;
-            margin-bottom: 30px;
+        .section-title {
+            color: #163b70;
+            margin-bottom: 25px;
+            font-size: 25px;
         }
+
+        /* APPLICATION CARD */
 
         .application-card {
-            background-color: white;
-            padding: 25px;
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
             margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
         }
 
-        .application-card h3 {
-            color: #1e467d;
-            margin-top: 0;
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
         }
 
-        .application-card p {
-            font-size: 16px;
-            line-height: 1.5;
+        .company-icon {
+            width: 60px;
+            height: 60px;
+            background: #eaf2ff;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .company-info h2 {
+            color: #163b70;
+            margin-bottom: 7px;
+        }
+
+        .company-info p {
+            color: #6b7280;
+        }
+
+        .details {
+            margin-top: 12px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* STATUS */
+
+        .status-section {
+            text-align: right;
+            min-width: 150px;
+        }
+
+        .status-label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
         }
 
         .status {
             display: inline-block;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Pending */
+
+        .status.pending {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        /* Selected */
+
+        .status.selected {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        /* Rejected */
+
+        .status.rejected {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            background: white;
+            padding: 70px 30px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .empty-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .empty h2 {
+            color: #163b70;
+            margin-bottom: 10px;
+        }
+
+        .empty p {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .jobs-button {
+            display: inline-block;
+            background: #163b70;
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 8px;
             font-weight: bold;
         }
 
-        .back {
-            display: block;
+        .jobs-button:hover {
+            background: #2563eb;
+        }
+
+        /* FOOTER */
+
+        footer {
             text-align: center;
-            margin-top: 30px;
-            color: #1e467d;
-            font-weight: bold;
-            text-decoration: none;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .main,
+            .page-header {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .application-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .status-section {
+                text-align: left;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <h1>College Placement Portal</h1>
-        <p>Your Career Starts Here</p>
-    </div>
+    <!-- NAVBAR -->
 
-    <div class="container">
+    <nav>
 
-        <h2>My Applications</h2>
+        <div class="logo">
+            🎓 Placement Portal
+        </div>
 
-        {% for application in applications %}
+        <div class="nav-links">
 
-        <div class="application-card">
+            <a href="{% url 'dashboard' %}">
+                Dashboard
+            </a>
 
-            <h3>
-                {{ application.job.company_name }}
-                - 
-                {{ application.job.job_role }}
-            </h3>
+            <a href="{% url 'jobs' %}">
+                Jobs
+            </a>
 
-            <p>
-                <strong>Location:</strong>
-                {{ application.job.location }}
-            </p>
-
-            <p>
-                <strong>Salary:</strong>
-                {{ application.job.salary }}
-            </p>
-
-            <p>
-                <strong>Applied On:</strong>
-                {{ application.applied_on|date:"d M Y, h:i A" }}
-            </p>
-
-            <p>
-                <strong>Status:</strong>
-               <span>{{ application.status }}</span>
-            </p>
+            <a href="{% url 'logout' %}" class="logout">
+                Logout
+            </a>
 
         </div>
 
-        {% empty %}
+    </nav>
 
-        <div class="application-card">
-            <p>You have not applied for any jobs yet.</p>
-        </div>
 
-        {% endfor %}
+    <!-- HEADER -->
 
-        <a href="{% url 'dashboard' %}" class="back">
-            ← Back to Dashboard
-        </a>
+    <div class="page-header">
+
+        <h1>📋 My Applications</h1>
+
+        <p>
+            Track the jobs you have applied for and check your application status.
+        </p>
 
     </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <h2 class="section-title">
+            Application History
+        </h2>
+
+
+        {% if applications %}
+
+            {% for application in applications %}
+
+            <div class="application-card">
+
+                <div>
+
+                    <div class="company-info">
+
+                        <div class="company-icon">
+                            🏢
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                {{ application.job.company_name }}
+                            </h2>
+
+                            <p>
+                                {{ application.job.job_role }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="details">
+
+                        📍 {{ application.job.location }}
+                        &nbsp;&nbsp; | &nbsp;&nbsp;
+                        📅 Applied on: {{ application.applied_on|date:"d M Y" }}
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-section">
+
+                    <div class="status-label">
+                        Application Status
+                    </div>
+
+                    {% if application.status == "Pending" %}
+
+                        <span class="status pending">
+                            ⏳ Pending
+                        </span>
+
+                    {% elif application.status == "Selected" %}
+
+                        <span class="status selected">
+                            ✓ Selected
+                        </span>
+
+                    {% elif application.status == "Rejected" %}
+
+                        <span class="status rejected">
+                            ✕ Rejected
+                        </span>
+
+                    {% else %}
+
+                        <span class="status pending">
+                            {{ application.status }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <h2>
+                    No Applications Yet
+                </h2>
+
+                <p>
+                    You haven't applied for any jobs yet.
+                    Explore available opportunities and start applying.
+                </p>
+
+                <a href="{% url 'jobs' %}" class="jobs-button">
+                    Explore Jobs →
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            College Placement Portal • Your Career Starts Here 🚀
+        </p>
+
+    </footer>
 
 </body>
 </html>
